@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignupPage extends BasePage{
+public class SignupPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"name\"]")
     private WebElement nameInput;
 
@@ -39,8 +39,30 @@ public class SignupPage extends BasePage{
     public WebElement getPasswordInput() {
         return passwordInput;
     }
+    public WebElement getConfirmPasswordInput(){
+        return confirmPasswordInput;
+    }
+    public WebElement getExistingEmailError(){
+        return existingEmailError;
+    }
+    public void clickSignupButton(){
+        signupButton.click();
+    }
 
-    public WebElement getConfirmPasswordInput() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public WebElement getConfirmPasswordInput() {
         return confirmPasswordInput;
     }
 
@@ -50,5 +72,5 @@ public class SignupPage extends BasePage{
 
     public void clickSignupButton() {
         signupButton.click();
-    }
+    }*/
 }

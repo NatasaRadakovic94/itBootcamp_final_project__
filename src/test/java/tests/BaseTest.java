@@ -17,7 +17,7 @@ public class BaseTest {
 
 
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\bootcamp\\chromedriver.exe");
         driver = new ChromeDriver();
         driverWait = new WebDriverWait(driver, Duration.ofSeconds(10));

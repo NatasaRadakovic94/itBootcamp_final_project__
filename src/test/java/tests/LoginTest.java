@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest{
 
     @BeforeClass
     @Override
-    public void beforeClass() {
+    public void beforeClass() throws InterruptedException {
         super.beforeClass();
         loginPage = new LoginPage(driver, driverWait);
         faker = new Faker();
