@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest{
     private LoginPage loginPage;
     private Faker faker;
 
-    @BeforeClass
+    @BeforeClass //skratila sam linije koda koje se izvrsavaju pre svakog testa
     @Override
     public void beforeClass() throws InterruptedException {
         super.beforeClass();
@@ -21,14 +21,14 @@ public class LoginTest extends BaseTest{
     @Test
     public void checkUrlRoute() throws InterruptedException {
         homePage.clickLoginButton();
-        Thread.sleep(1000); // ne radi bez ove linije
+        Thread.sleep(1000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
     }
 
     @Test
     public void checkInputTypes() throws InterruptedException {
         homePage.clickLoginButton();
-        Thread.sleep(1000); // ne radi bez ove linije
+        Thread.sleep(1000);
         Assert.assertEquals(loginPage.getEmailInput().getAttribute("type"), "email");
         Assert.assertEquals(loginPage.getPasswordInput().getAttribute("type"), "password");
     }
@@ -36,11 +36,11 @@ public class LoginTest extends BaseTest{
     @Test
     public void checkUserNotExistsError() throws InterruptedException {
         homePage.clickLoginButton();
-        Thread.sleep(2000); // ne radi bez ove linije
+        Thread.sleep(2000);
         loginPage.getEmailInput().sendKeys(faker.internet().emailAddress());
         loginPage.getPasswordInput().sendKeys(faker.internet().password());
         loginPage.clickLoginButton();
-        Thread.sleep(2000); // ne radi bez ove linije
+        Thread.sleep(2000);
         Assert.assertEquals(loginPage.getErrorMessage().getText(), "User does not exists");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
     }
@@ -60,11 +60,11 @@ public class LoginTest extends BaseTest{
     @Test
     public void checkProperLogin() throws InterruptedException {
         homePage.clickLoginButton();
-        Thread.sleep(1000); // ne radi bez ove linije
+        Thread.sleep(1000);
         loginPage.getEmailInput().sendKeys("admin@admin.com");
         loginPage.getPasswordInput().sendKeys("12345");
         loginPage.clickLoginButton();
-        Thread.sleep(2000); // ne radi bez ove linije
+        Thread.sleep(2000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"));
         homePage.clickLogoutButton();
     }
@@ -72,11 +72,11 @@ public class LoginTest extends BaseTest{
     @Test
     public void checkLogOut() throws InterruptedException {
         homePage.clickLoginButton();
-        Thread.sleep(1000); // ne radi bez ove linije
+        Thread.sleep(1000);
         loginPage.getEmailInput().sendKeys("admin@admin.com");
         loginPage.getPasswordInput().sendKeys("12345");
         loginPage.clickLoginButton();
-        Thread.sleep(2000); // ne radi bez ove linije
+        Thread.sleep(2000);
         Assert.assertTrue(homePage.getLogOutButton().isDisplayed());
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"));
         homePage.clickLogoutButton();
